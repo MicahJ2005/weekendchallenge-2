@@ -3,37 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>Weekend Challenge #2</title>
+    
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/style.css">
     <script src="vendors/jquery-3.2.1.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
     
   </head>
   <body>
-    <h1>Weekend Challenge #2</h1>
-    <h2>Server Side Calculator</h2>
-
+    <section class="container">
+      <h1>Weekend Challenge #2</h1>
+      <h2>Server Side Calculator</h2>
+    </section>
     <section class="container">
       <form>
-        <input type="number" id="num1" placeholder="Number 1">
-        <input type="button" id="addButton" value="+">
-        <input type="button" id="minusButton" value="-">
-        <input type="button" id="multiplyButton" value="*">
-        <input type="button" id="divideButton" value="/">
-        <input type="number" id="num2" placeholder="Number 2">
-        <input type="button" id="equalsButton" value="=">
-        <input type="button" id="clearButton" value="c">
+        <input type="number" id="num1" placeholder="Number 1" class="form-control">
+        <input type="button" id="addButton" value="+" class="btn btn-primary">
+        <input type="button" id="minusButton" value="-" class="btn btn-primary">
+        <input type="button" id="multiplyButton" value="*" class="btn btn-primary">
+        <input type="button" id="divideButton" value="/" class="btn btn-primary">
+        <input type="number" id="num2" placeholder="Number 2" class="form-control">
+        <input type="button" id="equalsButton" value="=" class="btn btn-success">
+        <input type="button" id="clearButton" value="c" class="btn btn-danger">
       </form>
     </section>
 
-    <section>
-      <h2 id="total">Total: (sum)</h2>
+    <section class="container">
+      <h2 id="total">Total:</h2>
     </section>
 
     <section class="container">
       <h2>History:</h2>
       <h2 id="history"></h2>
-      <ul>
+        <ul>
         
-      </ul>
+        </ul>
     </section>
 
 
