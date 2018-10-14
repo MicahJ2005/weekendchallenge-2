@@ -23,7 +23,7 @@ function addNumbers(event){
   console.log('equal button clicked');
   let input1 = $('#num1').val();
   let input2 = $('#num2').val();
-  // let mathFunction = $(this).val();
+  
   $('#num1').val('');
   $('#num2').val('');
   console.log(`number 1: ${input1} operator: ${operator} Number 2: ${input2}`);
@@ -35,13 +35,13 @@ function addNumbers(event){
       Input1: input1,
       Operator: operator,
       Input2: input2,
-
+      
     }
   }).then(function(response){
     console.log('numbers added');
-    // $('input').val('');
+    
     getAllNumbers();
-    appendSum();
+    getSum();
   }).catch(function(error){
     console.log('error adding to server');
     
@@ -56,8 +56,6 @@ function getAllNumbers(){
     console.log('get numbers', response);
     
     showAllNumbers(response);
-    // getSum.empty();
-    
   }).catch( function(error) {
     console.log('Error in request to server for numbers');
     
@@ -65,6 +63,8 @@ function getAllNumbers(){
 }
 
 function showAllNumbers(numbersArray){
+  console.log('in show all numbers');
+  
   $('#history').empty();
   for(let number of numbersArray){
     $('#history').append(`
@@ -77,26 +77,20 @@ function showAllNumbers(numbersArray){
 }
 
 function getSum(){
+  console.log('in getSum');
+  
   $.ajax({
     method: 'GET',
     url: '/sum',
   }).then(function(response) {
     console.log('get sum', response);
-    // $('#total').empty();
-    appendSum(response);
+    $('#total').empty();
+    $('#total').append('Total:', response);
     
   }).catch( function(error) {
     console.log('Error in request to server for sum');
     
   })
-}
-
-function appendSum(response){
-  console.log('append Sum', response);
-  
-  // $('#total').empty();
-  $('#total').append(`Total:`, response);
-
 }
 
 

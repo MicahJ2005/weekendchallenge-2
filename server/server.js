@@ -8,10 +8,10 @@ app.use( express.static('server/public'));
 
 const Calculations = [];
 
-answer = 0
+let answer;
 
 app.get('/numbers', (req, res) => {
-    res.send(Calculations)
+    res.send(Calculations);
 })
 
 
@@ -24,11 +24,14 @@ app.post('/numbers', (req, res) => {
 })
 
 app.get('/sum', (req, res) => {
+    console.log('in app.get log');
+    math();
     res.send(answer);
 })
 
 
 function math(){
+    
     for(let i=0; i<Calculations.length; i++){
     
     let firstNumber = Calculations[i].Input1;
@@ -39,14 +42,14 @@ function math(){
     
     let secondNumber = Calculations[i].Input2;
     console.log('second number', secondNumber);
-    
-    
+
     let answer = eval(firstNumber+operator+secondNumber);
-    console.log(answer);
+       
+    console.log('answer =', answer);
     
-    }
+    }  
+
 }
-math();
 
 const port = 5000;
 
