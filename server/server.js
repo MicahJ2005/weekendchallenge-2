@@ -8,7 +8,6 @@ app.use( express.static('server/public'));
 
 //Calculations array that houses my history of calculations
 const Calculations = [];
-
 let answer;
 
 /// GET /numbers link to client.js
@@ -20,6 +19,10 @@ app.get('/numbers', (req, res) => {
 /// POST /numbers link to client.js
 app.post('/numbers', (req, res) => {
     let newNumber = req.body;
+    console.log('app.post newNumber is', newNumber);
+    answer = math(newNumber);
+    console.log(answer);
+    
     /// using unshift to append top to bottom
     Calculations.unshift(newNumber);
     
@@ -30,35 +33,29 @@ app.post('/numbers', (req, res) => {
 app.get('/sum', (req, res) => {
     console.log('in app.get log');
     /// calling my math() function to app.get
-    math();
-    res.send(answer); /// sending answer back ---- NOT WORKING!!!
+    res.send(answer.toString()); /// sending answer back 
 })
 
 /// running math() function
-function math(){
-    console.log('in math function');
-    
-    // for loop getting info of numbers and operators from the Calculations array;
-    for(let i=0; i<Calculations.length; i++){
-    
-    let firstNumber = Calculations[i].Input1;
-    console.log('first number', firstNumber);
-    
-    let operator = Calculations[i].Operator;
-    console.log('operator', operator);
-    
-    let secondNumber = Calculations[i].Input2;
-    console.log('second number', secondNumber);
-
-    let answer = eval(firstNumber+operator+secondNumber);
-    /// console logging answer is working!
-    console.log('answer =', answer);
-    
-    return answer;
-    }  
-
+function math(newNumber){
+   let num1 = parseFloat(newNumber.Input1);
+   let num2 = parseFloat(newNumber.Input2);
+    console.log(num1 + ' ' + num2);
+    let operator = newNumber.Operator;
+    if ( operator == '+' ){
+        let answer = num1 + num2;
+        return answer;
+    } else if (operator == '-') {
+        let answer = num1 - num2;
+        return answer;
+    } else if ( operator == '*' ) {
+        let answer = num1 * num2;
+        return answer;
+    } else if ( operator == '/' ) {
+        let answer = num1 / num2;
+        return answer;
+     }
 }
-
 
 const port = 5000;
 /// listening to port 5000

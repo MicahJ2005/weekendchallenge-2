@@ -14,8 +14,6 @@ $('#clearButton').on('click', clearInput);
 
 let operator = 0;
 
-//// claering the values of the input fields
-
 /// Running addNumbers to gather information on = click event
 function addNumbers(event){
   event.preventDefault();
@@ -45,7 +43,6 @@ function addNumbers(event){
     getSum();
   }).catch(function(error){
     console.log('error adding to server');
-    
   })
 }
 /// GET is getting from server
@@ -58,8 +55,7 @@ function getAllNumbers(){
     /// calling showAllNumbers() function to append the history on DOM
     showAllNumbers(response);
   }).catch( function(error) {
-    console.log('Error in request to server for numbers');
-    
+    console.log('Error in request to server for numbers');   
   })
 }
 
@@ -86,7 +82,7 @@ function getSum(){
     console.log('get sum', response);
     /// emptying append
     $('#total').empty();
-    /// appending response from server ---- NOT WORKING!!!
+    /// appending response from server
     $('#total').append('Total:', response);
     
   }).catch( function(error) {
@@ -94,13 +90,10 @@ function getSum(){
     
   })
 }
-
-
 //// this function removes the '=' button from causing problems
 //// with my type="button" inputs
 function mathType(){
   if($(this).val() === '='){
-    
   }
   else{
     operator = $(this).val();
